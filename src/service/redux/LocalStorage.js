@@ -12,7 +12,7 @@ export const loadState = () => {
 
 export const saveState = (state) => {
   try {
-    const serializedState = JSON.stringify(state);
+    const serializedState = JSON.stringify(state.isAuthorized);
     localStorage.setItem("state", serializedState);
   } catch (e) {
     console.log(e);
