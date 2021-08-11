@@ -19,7 +19,7 @@ export const Reducer = (state = initailState, action) => {
         ...state,
         loading: false,
         loginData: action.payload.data,
-        isAuthorized: action.payload.data.user.token,
+        isAuthorized: localStorage.getItem("token"),
       };
 
     case actions.GET_FAILURE:

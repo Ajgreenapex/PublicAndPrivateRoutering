@@ -36,7 +36,7 @@ function Login() {
       .required("Password is required."),
   });
 
-  //console.log("state==========>", state);
+  console.log("state==========>", state);
   return (
     <div className="col-sm-6 offset-sm-3">
       <h1>login</h1>
