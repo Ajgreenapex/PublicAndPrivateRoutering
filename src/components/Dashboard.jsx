@@ -1,17 +1,25 @@
 import { Button } from "react-bootstrap";
 import React from "react";
 import { logout } from "../service/redux/Action";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 const Dashboard = () => {
+  const state = useSelector((state) => state);
   const dispatch = useDispatch();
   const logOutHandler = () => {
     dispatch(logout());
   };
+  console.log("DASHBOARDstate==========>", state);
   return (
     <div>
-      <h1>dashborad </h1>
-      <h1>dashborad </h1> <h1>dashborad </h1> <h1>dashborad </h1>
+      <h1>Dashborad </h1>
+      <br />
+      <h4>
+        {state.loginData.user.first_name + " " + state.loginData.user.last_name}
+      </h4>
+      <h4>{state.loginData.user.email}</h4>
+      <h4>{state.loginData.user.city}</h4>
+      <h4>{state.loginData.user.phone}</h4>
       <Button variant="primary" onClick={logOutHandler}>
         logout
       </Button>
