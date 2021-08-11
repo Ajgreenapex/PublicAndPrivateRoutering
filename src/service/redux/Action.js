@@ -8,7 +8,6 @@ export const login = (url, data) => {
 
     try {
       const res = await POST_API(url, data);
-      localStorage.setItem("token", res.data.data.user.token);
       // console.log("token===============>", res);
       console.log("token===============>", res.data.data.user.token);
       dispatch({ type: actions.GET_SUCCESS, payload: res.data });
@@ -23,7 +22,7 @@ export const logout = () => {
     dispatch({ type: actions.GET_REQUEST });
 
     try {
-      dispatch({ type: actions.GET_LOGOUT, payload: localStorage.clear() });
+      dispatch({ type: actions.GET_LOGOUT, payload: false });
     } catch (e) {
       //console.log("error==========>", e);
       dispatch({ type: actions.GET_FAILURE, error: e });
