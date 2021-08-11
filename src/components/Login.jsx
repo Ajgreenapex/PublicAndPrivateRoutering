@@ -10,7 +10,7 @@ function Login() {
   const dispatch = useDispatch();
   const loginHandler = (values) => {
     const url = "https://api-viralsaints.priceyouridea.com/api/v1/users/login";
-    console.log(values);
+    // console.log(values);
     const data = {
       user: {
         email: values.email,
@@ -36,7 +36,7 @@ function Login() {
       .required("Password is required."),
   });
 
-  console.log("state==========>", state);
+  //console.log("state==========>", state);
   return (
     <div className="col-sm-6 offset-sm-3">
       <h1>login</h1>

@@ -25,7 +25,7 @@ export const logout = () => {
     try {
       dispatch({ type: actions.GET_LOGOUT, payload: localStorage.clear() });
     } catch (e) {
-      console.log("error==========>", e);
+      //console.log("error==========>", e);
       dispatch({ type: actions.GET_FAILURE, error: e });
     }
   };

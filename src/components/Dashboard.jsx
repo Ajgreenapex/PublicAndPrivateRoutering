@@ -9,7 +9,7 @@ const Dashboard = () => {
   const logOutHandler = () => {
     dispatch(logout());
   };
-  console.log("DASHBOARDstate==========>", state);
+  // console.log("DASHBOARDstate==========>", state);
   return (
     <div>
       <h1>Dashborad </h1>
