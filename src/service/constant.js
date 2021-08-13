@@ -2,3 +2,7 @@ export const GET_SUCCESS = "GET_SUCCESS";
 export const GET_REQUEST = "GET_REQUEST";
 export const GET_FAILURE = "GET_FAILURE";
 export const GET_LOGOUT = "GET_LOGOUT";
+export const GET_ONGOINGDATA = "GET_ONGOINGDATA";
+export const GET_COMPLETED = "GET_COMPLETED";
+export const GET_NOT_STARTED = "GET_NOT_STARTED";
+export const GET_VIEW_PROFILE = "GET_VIEW_PROFILE";

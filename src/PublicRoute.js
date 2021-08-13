@@ -19,22 +19,24 @@ import { Redirect, Route } from "react-router-dom";
 //   );
 // }
 
-//const isAuthorized = localStorage.getItem("token");
-//console.log(isAuthorized);
-const PublicRoute = ({ component: Component, isAuthorized, ...rest }) => (
-  <Route
-    {...rest}
-    render={(props) =>
-      isAuthorized ? (
-        // <Redirect to="/dashboard" />
-        <Redirect
-          to={{ pathname: "/dashboard", state: { from: props.location } }}
-        />
-      ) : (
-        <Component {...props} />
-      )
-    }
-  />
-);
+function PublicRoute({ component: Component, ...rest }) {
+  const isAuthorized = localStorage.getItem("token");
+  //console.log("public =================>", isAuthorized);
+  return (
+    <Route
+      {...rest}
+      render={(props) =>
+        isAuthorized ? (
+          // <Redirect to="/dashboard" />
+          <Redirect
+            to={{ pathname: "/dashboard", state: { from: props.location } }}
+          />
+        ) : (
+          <Component {...props} />
+        )
+      }
+    />
+  );
+}
 
 export default PublicRoute;

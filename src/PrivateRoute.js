@@ -18,14 +18,17 @@ import { Redirect, Route } from "react-router-dom";
 // }
 // export default PrivateRoute;
 
-//const isAuthorized = localStorage.getItem("token");
-const PrivateRoute = ({ component: Component, isAuthorized, ...rest }) => (
-  <Route
-    {...rest}
-    render={(props) =>
-      isAuthorized ? <Component {...props} /> : <Redirect to="/" />
-    }
-  />
-);
+function PrivateRoute({ component: Component, ...rest }) {
+  const isAuthorized = localStorage.getItem("token");
+  //console.log("private =================>", isAuthorized);
+  return (
+    <Route
+      {...rest}
+      render={(props) =>
+        isAuthorized ? <Component {...props} /> : <Redirect to="/" />
+      }
+    />
+  );
+}
 
 export default PrivateRoute;

@@ -5,25 +5,15 @@ import { BrowserRouter as Router, Switch } from "react-router-dom";
 import PrivateRoute from "./PrivateRoute";
 import PublicRoute from "./PublicRoute";
 import { useSelector } from "react-redux";
+import ViewProfile from "./components/ViewProfile";
 function App() {
-  const state = useSelector((state) => state);
   return (
     <div className="App">
       <Router>
         <Switch>
-          <PublicRoute
-            exact
-            path="/"
-            isAuthorized={state.isAuthorized}
-            component={Login}
-          />
-          <PrivateRoute
-            exact
-            path="/dashboard"
-            isAuthorized={state.isAuthorized}
-            component={Dashboard}
-          />
-          {/* <Route exact path="/exmaple" component={exmaple} /> */}
+          <PublicRoute exact path="/" component={Login} />
+          <PrivateRoute exact path="/dashboard" component={Dashboard} />
+          <PrivateRoute exact path="/ViewProfile" component={ViewProfile} />
         </Switch>
       </Router>
     </div>

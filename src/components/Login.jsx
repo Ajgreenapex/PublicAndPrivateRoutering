@@ -1,14 +1,16 @@
-import React from "react";
+import React, { useState } from "react";
 import { Button } from "react-bootstrap";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as yup from "yup";
 import { useDispatch, useSelector } from "react-redux";
 import { login } from "../service/redux/Action";
+import { Redirect, withRouter } from "react-router-dom";
 
-function Login() {
-  const state = useSelector((state) => state);
+function Login(props) {
+  // const state = useSelector((state) => state);
   const dispatch = useDispatch();
-  const loginHandler = (values) => {
+  const [isAuthorized, setisAuthorized] = useState(null);
+  const loginHandler = async (values) => {
     const url = "https://api-viralsaints.priceyouridea.com/api/v1/users/login";
     // console.log(values);
     const data = {
@@ -17,7 +19,15 @@ function Login() {
         password: values.password,
       },
     };
-    dispatch(login(url, data));
+    await dispatch(login(url, data));
+    await setisAuthorized(localStorage.getItem("token"));
+
+    // console.log("while", isAuthorized);
+    if (isAuthorized) {
+      // console.log("while andar wala ", props.history);
+      return <Redirect to="/dashboard" />;
+      // props.history.push("/dashboard");
+    }
   };
 
   const validate = yup.object().shape({
@@ -36,7 +46,7 @@ function Login() {
       .required("Password is required."),
   });
 
-  console.log("state==========>", state);
+  // console.log("state_login==========>", state);
   return (
     <div className="col-sm-6 offset-sm-3">
       <h1>login</h1>
@@ -99,4 +109,4 @@ function Login() {
     </div>
   );
 }
-export default Login;
+export default withRouter(Login);
